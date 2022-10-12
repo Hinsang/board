@@ -63,16 +63,16 @@ public class Dao {
 		return list;
 	}
 	
-	public boolean delete( String bpw, String bid ) {
-		String sql = "delete from board where bpw = ? and bid = ?";
+	public boolean delete( int bno, String bpw ) {
+		String sql = "delete from board where bno = ? and bpw = ?";
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1, bpw);
-			ps.setString(2, bid);
+			ps.setInt(1, bno);
+			ps.setString(2, bpw);
 			int count = ps.executeUpdate(); // 삭제 레코드 수 반환
 			if(count == 1) {
 				return true;
-				// 삭제된 리코드가 1개이면 성공
+				// 삭제된 레코드가 1개이면 성공
 			}
 		} catch (Exception e) {
 			System.out.println(e);

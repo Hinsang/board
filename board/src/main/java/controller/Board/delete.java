@@ -31,12 +31,10 @@ public class delete extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int bno = Integer.parseInt(request.getParameter("bno"));
 		String bpw = request.getParameter("bpw");
-		// String bid = request.getParameter("bid");
-		String bid = (String)request.getSession().getAttribute("bid");
-		HttpSession 세션 = request.getSession();	// 1. 세션 객체 선언
-		세션.setAttribute("bid", bid);
-		boolean result = Dao.getInstance().delete(bpw, bid);
+
+		boolean result = Dao.getInstance().delete(bno, bpw);
 		response.getWriter().print(result);
 	}
 
