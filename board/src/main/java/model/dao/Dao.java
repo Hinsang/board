@@ -80,6 +80,29 @@ public class Dao {
 		return false;
 	}
 	
+	public Dto getboard(int bno) {
+		System.out.println(bno);
+		String sql = "select * from board where bno = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, bno);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Dto dto = new Dto(
+							rs.getInt(1), rs.getString(2),
+							rs.getString(3), rs.getString(4),
+							rs.getString(5), rs.getString(6),
+							rs.getInt(7)
+						);
+				return dto;
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
 }
 
 
