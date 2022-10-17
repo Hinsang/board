@@ -14,7 +14,7 @@ import model.dao.Dao;
 /**
  * Servlet implementation class delete
  */
-@WebServlet("/Board/delete")
+@WebServlet("/board/delete")
 public class delete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

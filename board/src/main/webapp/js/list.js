@@ -1,7 +1,7 @@
 boardlist()
 function boardlist(){
 	$.ajax({
-		url: "/board/Board/boardlist",
+		url: "/board/board/boardlist",
 		success : function( result ) {
 			let boardlist = JSON.parse(result)
 			
@@ -34,7 +34,7 @@ function boardlist(){
 					'<button type="submit" onclick="bdelete('+b.bno+')">확인</button></td>' +
 					'</tr>';
 			}
-			table.innerHTML = tag
+			table.innerHTML += tag
 		}
 	})
 
@@ -45,24 +45,26 @@ function view(bno){
 	$.ajax({
 		url : "http://localhost:8080/board/board/view" ,
 		data : { "bno" : bno },
-		success : function( re ){ 
-			location.href="../Board/view.jsp";
-			let board  = JSON.parse( re )
-			console.log( board )
-			document.querySelector('.bno2').innerHTML = board.bno;
-			document.querySelector('.bid2').innerHTML = board.bid;
-			document.querySelector('.btitle2').innerHTML = board.btitle;
-			document.querySelector('.bcontent2').innerHTML = board.bcontent;
-			viewload(board)
+		success : function( re ){
+			location.href = "http://localhost:8080/board/board/view.jsp"
+			viewload(re) // 다른페이지에 넘어갈때 함수실행하면서 결과값 넘겨줌
 		}
 	})
 }
 
-function viewload(board) {
-	location.href="../Board/view.jsp";
-	console.log( board )
-	document.querySelector('.bno2').innerHTML = board.bno;
-	document.querySelector('.bid2').innerHTML = board.bid;
-	document.querySelector('.btitle2').innerHTML = board.btitle;
-	document.querySelector('.bcontent2').innerHTML = board.bcontent;
+function viewload(re){
+	let board  = JSON.parse( re )
+	document.querySelector('.bno').innerHTML = board.bno;
+	document.querySelector('.bid').innerHTML = board.bid;
+	document.querySelector('.btitle').innerHTML = board.btitle;
+	document.querySelector('.bcontent').innerHTML = board.bcontent;
 }
+
+//function viewload(board) {
+//	location.href="../Board/view.jsp";
+//	console.log( board )
+//	document.querySelector('.bno2').innerHTML = board.bno;
+//	document.querySelector('.bid2').innerHTML = board.bid;
+//	document.querySelector('.btitle2').innerHTML = board.btitle;
+//	document.querySelector('.bcontent2').innerHTML = board.bcontent;
+//}

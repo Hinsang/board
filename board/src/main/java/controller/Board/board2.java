@@ -14,8 +14,8 @@ import model.dto.Dto;
 /**
  * Servlet implementation class Board
  */
-@WebServlet("/board")
-public class Board extends HttpServlet {
+@WebServlet("/board/board2")
+public class board2 extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// 한글 인코딩
@@ -34,7 +34,7 @@ public class Board extends HttpServlet {
 		// boolean result = Dao.getInstance().signup(dto);
 		
 		if( result ) {
-			response.sendRedirect("/board/Board/Board.jsp");
+			response.sendRedirect("/board/board/board2.jsp");
 			System.out.println("등록성공!!");
 		}
 		else {
@@ -45,7 +45,7 @@ public class Board extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
        
-    public Board() {
+    public board2() {
         super();
         // TODO Auto-generated constructor stub
     }

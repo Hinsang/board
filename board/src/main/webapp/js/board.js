@@ -17,13 +17,13 @@ function bdelete( bno ) {
 	// ajax를 이용한 회원탈퇴 처리
 	
 	$.ajax({
-		url : "/board/Board/delete",
+		url : "/board/board/delete",
 		data: { "bno" : bno, "bpw" : bpw },
 		success: function( result ) {
 			alert(result)
 			if(result == 'true') {
 				alert('삭제 성공')
-				location.href = '/board/Board/Board.jsp'
+				location.href = '/board/board/board2.jsp'
 			} else {
 				alert('삭제 실패')
 			}

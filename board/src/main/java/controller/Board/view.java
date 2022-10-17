@@ -34,6 +34,7 @@ public class view extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int bno = Integer.parseInt(request.getParameter("bno"));
+		System.out.println(bno);
 		Dto dto = Dao.getInstance().getboard(bno);
 		System.out.println(dto);
 

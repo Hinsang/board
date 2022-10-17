@@ -18,7 +18,7 @@ import model.dto.Dto;
 /**
  * Servlet implementation class boardlist
  */
-@WebServlet("/Board/boardlist")
+@WebServlet("/board/boardlist")
 public class boardlist extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

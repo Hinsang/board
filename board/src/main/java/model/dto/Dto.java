@@ -9,6 +9,10 @@ public class Dto {
 	String bdate;
 	int bpoint;
 	
+	public Dto() {
+		
+	}
+	
 	public Dto(int bno, String btitle, String bcontent, String bid, String bpw, String bdate, int bpoint) {
 		super();
 		this.bno = bno;
@@ -61,6 +65,12 @@ public class Dto {
 	}
 	public void setBpoint(int bpoint) {
 		this.bpoint = bpoint;
+	}
+
+	@Override
+	public String toString() {
+		return "Dto [bno=" + bno + ", btitle=" + btitle + ", bcontent=" + bcontent + ", bid=" + bid + ", bpw=" + bpw
+				+ ", bdate=" + bdate + ", bpoint=" + bpoint + "]";
 	}
 	
 }
