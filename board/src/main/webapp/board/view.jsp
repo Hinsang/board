@@ -24,8 +24,8 @@
 	</div>
 	
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script type="text/javascript" src="../js/board.js"></script>
-	<script type="text/javascript" src="../js/list.js"></script>
+<!-- 	<script type="text/javascript" src="../js/board.js"></script> -->
+<!-- 	<script type="text/javascript" src="../js/list.js"></script> -->
 	<script type="text/javascript" src="../js/view.js"></script>
 
 </body>

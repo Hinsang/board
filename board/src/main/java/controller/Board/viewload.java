@@ -17,14 +17,14 @@ import model.dto.Dto;
 /**
  * Servlet implementation class view
  */
-@WebServlet("/board/view")
-public class view extends HttpServlet {
+@WebServlet("/board/viewload")
+public class viewload extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public view() {
+    public viewload() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,19 +35,34 @@ public class view extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  
 		//request.getSession().invalidate(); // 모든 세션 초기화
-		HttpSession session = request.getSession();	// 1. 세션 객체 선언
+//		HttpSession session = request.getSession();	// 1. 세션 객체 선언
 		
-		int bno = Integer.parseInt(request.getParameter("bno"));
-		session.setAttribute("bno", bno);			// 2. 세션 생성[ 세션 메모리 할당 ]
-		System.out.println(bno+"aaa");
+//		int bno = Integer.parseInt(request.getParameter("bno"));
+//		session.setAttribute("bno", bno);			// 2. 세션 생성[ 세션 메모리 할당 ]
+//		System.out.println(bno+"aaa");
 		
-		bno = (Integer)session.getAttribute("bno");
+		int bno = (Integer)request.getSession().getAttribute("bno");
 //		int bno = Integer.parseInt(request.getParameter("bno"));
 //		System.out.println("hhh:"+bno);
-		Dao.getInstance().getboard(bno);
+		Dto dto = Dao.getInstance().getviewload(bno);
+		System.out.println(dto);
 		
 		//if(bno == -1) {			
 		//}
+		
+		
+
+		JSONObject object = new JSONObject();
+		object.put("bno", dto.getBno());
+		object.put("btitle", dto.getBtitle());
+		object.put("bcontent", dto.getBcontent());
+		object.put("bid", dto.getBid() );
+		object.put("bpw", dto.getBpw() );
+		object.put("bdate", dto.getBdate() );
+		object.put("bpoint", dto.getBpoint() );
+		
+		response.setCharacterEncoding("utf-8");
+		response.getWriter().print( object );
 		
 	}
 

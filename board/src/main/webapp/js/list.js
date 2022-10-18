@@ -40,25 +40,38 @@ function boardlist(){
 
 }
 
-function view(bno){
+function view(bno){ // 제목 눌렀을때 게시물 번호를 세션에 저장하는 함수
 	console.log(bno+"입니다!!")
 	$.ajax({
 		url : "http://localhost:8080/board/board/view" ,
 		data : { "bno" : bno },
 		success : function( re ){
 			location.href = "http://localhost:8080/board/board/view.jsp"
-			viewload(re) // 다른페이지에 넘어갈때 함수실행하면서 결과값 넘겨줌
+			// viewload(re) // 다른페이지에 넘어갈때 함수실행하면서 결과값 넘겨줌
 		}
 	})
 }
 
-function viewload(re){
-	let board  = JSON.parse( re )
-	document.querySelector('.bno').innerHTML = board.bno;
-	document.querySelector('.bid').innerHTML = board.bid;
-	document.querySelector('.btitle').innerHTML = board.btitle;
-	document.querySelector('.bcontent').innerHTML = board.bcontent;
-}
+//function bview(bno){
+//	$.ajax({
+//		url : "http://localhost:8080/board/board/view" ,
+//		data : { "bno" : bno },
+//		success : function( re ){ 
+//			console.log(re)
+//			
+//			
+//		}
+//	})
+//}
+
+
+//function viewload(re){
+//	let board  = JSON.parse( re )
+//	document.querySelector('.bno').innerHTML = board.bno;
+//	document.querySelector('.bid').innerHTML = board.bid;
+//	document.querySelector('.btitle').innerHTML = board.btitle;
+//	document.querySelector('.bcontent').innerHTML = board.bcontent;
+//}
 
 //function viewload(board) {
 //	location.href="../Board/view.jsp";

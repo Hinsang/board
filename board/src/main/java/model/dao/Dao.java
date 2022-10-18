@@ -79,8 +79,19 @@ public class Dao {
 		}
 		return false;
 	}
+
+	public void getboard(int bno) {
+		System.out.println(bno);
+		String sql = "update board set bpoint = bpoint+1 where bno = "+bno;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
 	
-	public Dto getboard(int bno) {
+	public Dto getviewload(int bno) {
 		System.out.println(bno);
 		String sql = "select * from board where bno = ?";
 		try {
@@ -94,6 +105,7 @@ public class Dao {
 							rs.getString(5), rs.getString(6),
 							rs.getInt(7)
 						);
+				System.out.println("ok"+dto);
 				return dto;
 			}
 			
